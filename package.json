@@ -1,7 +1,7 @@
 {
-    "name": "vsc-task-buttons",
-    "displayName": "vsc-task-buttons",
-    "description": "Adding buttons to VS Code UI for running tasks",
+    "name": "vsc-run-buttons",
+    "displayName": "vsc-run-buttons",
+    "description": "Adding buttons to VS Code UI for running debugger",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.63.0"
@@ -10,57 +10,58 @@
         "Other"
     ],
     "activationEvents": [
-        "workspaceContains:.vscode/tasks.json"
+        "workspaceContains:.vscode/launch.json"
     ],
     "main": "./out/extension.js",
     "contributes": {
         "configuration": [
             {
-                "title": "Task Buttons Configuration",
+                "title": "Run Buttons Configuration",
                 "properties": {
-                    "TaskButtons.run": {
-                        "title": "Run Task",
+                    "RunButtons.run": {
+                        "title": "Run",
                         "type": "boolean",
                         "default": true,
-                        "description": "Show icon for 'Run Task'"
+                        "description": "Show icon for 'Run'"
                     },
-                    "TaskButtons.rerun": {
-                        "title": "Rerun Task",
+                    "RunButtons.rerun": {
+                        "title": "Rerun",
                         "type": "boolean",
                         "default": true,
-                        "description": "Show icon for 'Rerun Task'"
+                        "description": "Show icon for 'Rerun'"
                     }
                 }
             }
         ],
         "commands": [
             {
-                "command": "TaskButtons.run",
-                "title": "Run Task",
+                "command": "RunButtons.run",
+                "title": "Run",
                 "icon": {
                     "light": "images/play-b.svg",
                     "dark": "images/play-w.svg"
                 }
             },
             {
-                "command": "TaskButtons.rerun",
-                "title": "Rerun Task",
+                "command": "RunButtons.rerun",
+                "title": "Rerun",
                 "icon": {
                     "light": "images/play-circle-b.svg",
                     "dark": "images/play-circle-w.svg"
-                }
+                },
+                "enablement": "hasLastSelection"
             }
         ],
         "menus": {
             "editor/title": [
                 {
-                    "when": "editorTextFocus && config.TaskButtons.run",
-                    "command": "TaskButtons.run",
+                    "when": "config.RunButtons.run",
+                    "command": "RunButtons.run",
                     "group": "navigation@1"
                 },
                 {
-                    "when": "editorTextFocus && config.TaskButtons.rerun",
-                    "command": "TaskButtons.rerun",
+                    "when": "config.RunButtons.rerun",
+                    "command": "RunButtons.rerun",
                     "group": "navigation@2"
                 }
             ]
