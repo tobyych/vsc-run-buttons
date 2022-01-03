@@ -1,7 +1,4 @@
-# vsc-task-buttons README
-
-This is the README for your extension "vsc-task-buttons". After writing up a brief description, we recommend including the following sections.
-
+# Run Buttons README
 ## Features
 
 This extension adds two buttons to the top right corner of your VS Code editor and runs one of your run configurations in `launch.json`

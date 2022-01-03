@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 // activate is called when VS Code detected there is a .vscode/launch.json
 export async function activate(context: vscode.ExtensionContext) {
 
-    console.log('Congratulations, your extension "vsc-task-buttons" is now active!');
+    console.log('Congratulations, your extension "vsc-run-buttons" is now active!');
 
     let currentWorkspace: vscode.WorkspaceFolder;
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
