@@ -18,17 +18,11 @@
             {
                 "title": "Run Buttons Configuration",
                 "properties": {
-                    "RunButtons.run": {
-                        "title": "Run",
+                    "RunButtons.showListConfigButton": {
+                        "title": "List run configurations",
                         "type": "boolean",
                         "default": true,
-                        "description": "Show icon for 'Run'"
-                    },
-                    "RunButtons.rerun": {
-                        "title": "Rerun",
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Show icon for 'Rerun'"
+                        "description": "Show icon for 'List run configurations'"
                     }
                 }
             }
@@ -36,32 +30,44 @@
         "commands": [
             {
                 "command": "RunButtons.run",
-                "title": "Run",
+                "title": "Run Selected Configuration",
                 "icon": {
                     "light": "images/play-b.svg",
                     "dark": "images/play-w.svg"
                 }
             },
             {
-                "command": "RunButtons.rerun",
-                "title": "Rerun",
+                "command": "RunButtons.debug",
+                "title": "Debug Selected Configuration",
                 "icon": {
-                    "light": "images/play-circle-b.svg",
-                    "dark": "images/play-circle-w.svg"
-                },
-                "enablement": "hasLastSelection"
+                    "light": "images/crosshair-b.svg",
+                    "dark": "images/crosshair-w.svg"
+                }
+            },
+            {
+                "command": "RunButtons.list",
+                "title": "List run configurations",
+                "icon": {
+                    "light": "images/menu-b.svg",
+                    "dark": "images/menu-w.svg"
+                }
             }
         ],
         "menus": {
             "editor/title": [
                 {
-                    "when": "config.RunButtons.run",
+                    "when": "config.RunButtons.showListConfigButton",
+                    "command": "RunButtons.list",
+                    "group": "navigation@1"
+                }
+            ],
+            "editor/title/run": [
+                {
                     "command": "RunButtons.run",
                     "group": "navigation@1"
                 },
                 {
-                    "when": "config.RunButtons.rerun",
-                    "command": "RunButtons.rerun",
+                    "command": "RunButtons.debug",
                     "group": "navigation@2"
                 }
             ]
